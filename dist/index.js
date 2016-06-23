@@ -122,8 +122,9 @@ var AureliaWebpackPlugin = function () {
 
                     var requireRequestPath = _ref2;
 
+                    requireRequestPath = path.joinSafe('./', requireRequestPath);
                     var resource = contextElements[requireRequestPath];
-                    var newDependency = new ContextElementDependency(getPath(resource), path.joinSafe('./', requireRequestPath));
+                    var newDependency = new ContextElementDependency(getPath(resource), requireRequestPath);
                     if (resource.hasOwnProperty('optional')) newDependency.optional = !!resource.optional;else newDependency.optional = true;
                     var previouslyAdded = dependencies.findIndex(function (dependency) {
                       return dependency.userRequest === requireRequestPath;
